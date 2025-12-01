@@ -308,16 +308,15 @@
     .project-link span {
       border-bottom: 1px solid #111827;
     }
-
-  /* Base style for all project media blocks */
+/* Base style for all project media blocks */
 .project-media {
   height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff; /* brighter white text */
+  color: #ffffff !important; /* Force white text for maximum contrast */
   font-size: 0.9rem;
-  font-weight: 600; /* slightly bolder = more readable */
+  font-weight: 700; /* slightly bolder = more readable */
   text-align: center;
   padding: 0 1rem;
   border-top-left-radius: 1.1rem;
@@ -326,18 +325,14 @@
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55); /* improved readability */
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 1); /* Solid black shadow */
+  letter-spacing: 0.02em; /* Slightly more spacing */
+
+
 }
 
-/* Image overlay for readability */
 .project-media::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45); /* slightly lighter so images show */
-  border-top-left-radius: inherit;
-  border-top-right-radius: inherit;
-  z-index: 0;
+  background: rgba(0, 0, 0, 0.6); /* Even darker overlay */
 }
 
 .project-media > * {
