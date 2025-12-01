@@ -90,34 +90,37 @@
     .nav-links a:focus::after { width: 100%; }
 
     /* HERO */
-    .hero {
-      position: relative;
-      color: #f9fafb;
-      min-height: 78vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: left;
-      overflow: hidden;
-    }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-          135deg,
-          rgba(0, 0, 0, 0.75),
-          rgba(17, 24, 39, 0.3)
-        ),
-        url("hero.jpg") center/cover no-repeat;
-      z-index: -1;
-    }
+.hero {
+  position: relative;
+  color: #f9fafb;
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  overflow: hidden;
+}
 
-    .hero-inner {
-      max-width: 720px;
-      padding: 4rem 1.5rem 5rem;
-    }
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.75),  /* This creates the dark overlay */
+      rgba(17, 24, 39, 0.3)
+    ),
+    url("hero.jpg") center/cover no-repeat;
+  z-index: -1;
+}
+
+.hero-inner {
+  max-width: 720px;
+  padding: 4rem 1.5rem 5rem;
+  position: relative; /* Ensures text stays above the background */
+  z-index: 1;
+}
 
     .hero-kicker {
       text-transform: uppercase;
@@ -649,7 +652,7 @@
 
         <div class="contact-layout">
           <div class="contact-info">
-            <p><strong>Email</strong><br />hello@boardfinancelab.com</p>
+            <p><strong>Email</strong><br />info@boardfinancelab.com</p>
             <p><strong>Location</strong><br />Melbourne · London · Remote</p>
             <p><strong>We work with</strong><br />Boards, CFOs, CROs, Heads of Finance & Data</p>
           </div>
@@ -665,7 +668,7 @@
             </div>
             <div>
               <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+              <input id="email" name="email" type="email" placeholder="john@example.com" required />
             </div>
             <div>
               <label for="message">What do you want to improve?</label>
