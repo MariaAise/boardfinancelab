@@ -110,7 +110,7 @@
       rgba(17, 24, 39, 0.7),
       rgba(17, 24, 39, 0.4)
     ),
-    url("hero.jpg") center/cover no-repeat;
+    url("images/hero.jpg") center/cover no-repeat;
   z-index: 0; /* was -1 */
 }
 
@@ -309,6 +309,60 @@
       border-bottom: 1px solid #111827;
     }
 
+  /* Base style for all project media blocks */
+.project-media {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff; /* brighter white text */
+  font-size: 0.9rem;
+  font-weight: 600; /* slightly bolder = more readable */
+  text-align: center;
+  padding: 0 1rem;
+  border-top-left-radius: 1.1rem;
+  border-top-right-radius: 1.1rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55); /* improved readability */
+}
+
+/* Image overlay for readability */
+.project-media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45); /* slightly lighter so images show */
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  z-index: 0;
+}
+
+.project-media > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Specific images per project */
+.media-1 {
+  background-image: url("images/1.jpg");
+}
+
+.media-2 {
+  background-image: url("images/2.jpg");
+}
+
+.media-3 {
+  background-image: url("images/3.jpg");
+}
+
+.media-4 {
+  background-image: url("images/4.jpg");
+}
+
+
     /* TESTIMONIALS */
     .testimonials-grid {
       display: grid;
@@ -497,7 +551,8 @@
 
         <div class="features-grid">
           <article class="feature">
-            <h3>Business process optimisation</h3>
+            
+            
             <p>
               Map and redesign end-to-end finance and risk processes so work is structured,
               measurable, and ready for automation. Less noise, fewer manual handoffs,
@@ -524,89 +579,92 @@
       </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">Projects</div>
-          <h2 class="section-title">Selected work</h2>
-          <p class="section-description">
-            Four core project types. Each will later expand into its own page; for now,
-            these are concise placeholders.
+   <!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-kicker">Projects</div>
+      <h2 class="section-title">Selected work</h2>
+      <p class="section-description">
+        Four core project types. Each will later expand into its own page; for now,
+        these are concise placeholders.
+      </p>
+    </div>
+
+    <div class="projects-grid">
+
+      <article class="project-card">
+        <div class="project-media media-1">
+          Process mapping · approval flows · controls
+        </div>
+        <div class="project-body">
+          <div class="project-meta">01 · Process optimisation</div>
+          <h3 class="project-title">Flow Compliance</h3>
+          <p class="project-text">
+            Re-design of high-volume payment and approval workflows so regulatory controls are
+            embedded in the process, not bolted on at the end.
           </p>
+          <div class="project-link">
+            <span>Project page coming soon</span>
+          </div>
         </div>
+      </article>
 
-        <div class="projects-grid">
-          <article class="project-card">
-            <div class="project-media">
-              Process mapping · approval flows · controls
-            </div>
-            <div class="project-body">
-              <div class="project-meta">01 · Process optimisation</div>
-              <h3 class="project-title">Flow Compliance</h3>
-              <p class="project-text">
-                Re-design of high-volume payment and approval workflows so regulatory controls are
-                embedded in the process, not bolted on at the end.
-              </p>
-              <div class="project-link">
-                <span>Project page coming soon</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-media">
-              Scenario engines · ML forecasting
-            </div>
-            <div class="project-body">
-              <div class="project-meta">02 · Technology & AI</div>
-              <h3 class="project-title">Finance Analysis Platform</h3>
-              <p class="project-text">
-                AI-assisted scenario library for CFO teams, combining deterministic models with ML
-                overlays for capital allocation and liquidity planning.
-              </p>
-              <div class="project-link">
-                <span>Project page coming soon</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-media">
-              Streaming ledgers · alerts · timelines
-            </div>
-            <div class="project-body">
-              <div class="project-meta">03 · Technology & AI</div>
-              <h3 class="project-title">Real-Time Tracking</h3>
-              <p class="project-text">
-                Real-time monitoring of cash, credit, and operational metrics with anomaly detection
-                tuned to materiality thresholds agreed with the board.
-              </p>
-              <div class="project-link">
-                <span>Project page coming soon</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-media">
-              Board packs · one-page briefs
-            </div>
-            <div class="project-body">
-              <div class="project-meta">04 · Business communication</div>
-              <h3 class="project-title">Portfolio Signals</h3>
-              <p class="project-text">
-                Translation of complex portfolio and risk analytics into short narrative briefs,
-                backed by clear visuals and model documentation for audit and regulators.
-              </p>
-              <div class="project-link">
-                <span>Project page coming soon</span>
-              </div>
-            </div>
-          </article>
+      <article class="project-card">
+        <div class="project-media media-2">
+          Scenario engines · ML forecasting
         </div>
-      </div>
-    </section>
+        <div class="project-body">
+          <div class="project-meta">02 · Technology & AI</div>
+          <h3 class="project-title">Finance Analysis Platform</h3>
+          <p class="project-text">
+            AI-assisted scenario library for CFO teams, combining deterministic models with ML
+            overlays for capital allocation and liquidity planning.
+          </p>
+          <div class="project-link">
+            <span>Project page coming soon</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-media media-3">
+          Streaming ledgers · alerts · timelines
+        </div>
+        <div class="project-body">
+          <div class="project-meta">03 · Technology & AI</div>
+          <h3 class="project-title">Real-Time Tracking</h3>
+          <p class="project-text">
+            Real-time monitoring of cash, credit, and operational metrics with anomaly detection
+            tuned to materiality thresholds agreed with the board.
+          </p>
+          <div class="project-link">
+            <span>Project page coming soon</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-media media-4">
+          Board packs · one-page briefs
+        </div>
+        <div class="project-body">
+          <div class="project-meta">04 · Business communication</div>
+          <h3 class="project-title">Portfolio Signals</h3>
+          <p class="project-text">
+            Translation of complex portfolio and risk analytics into short narrative briefs,
+            backed by clear visuals and model documentation for audit and regulators.
+          </p>
+          <div class="project-link">
+            <span>Project page coming soon</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
 
     <!-- TESTIMONIALS -->
     <section id="testimonials">
@@ -652,8 +710,8 @@
 
         <div class="contact-layout">
           <div class="contact-info">
-            <p><strong>Email</strong><br />info@boardfinancelab.com</p>
-            <p><strong>Location</strong><br />London</p>
+            <p><strong>Email</strong><br />hello@boardfinancelab.com</p>
+            <p><strong>Location</strong><br />Melbourne · London · Remote</p>
             <p><strong>We work with</strong><br />Boards, CFOs, CROs, Heads of Finance & Data</p>
           </div>
 
@@ -668,7 +726,7 @@
             </div>
             <div>
               <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="john@example.com" required />
+              <input id="email" name="email" type="email" placeholder="you@example.com" required />
             </div>
             <div>
               <label for="message">What do you want to improve?</label>
