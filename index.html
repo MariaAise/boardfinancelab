@@ -89,8 +89,6 @@
     .nav-links a:hover::after,
     .nav-links a:focus::after { width: 100%; }
 
-    /* HERO */
-
 .hero {
   position: relative;
   color: #f9fafb;
@@ -100,6 +98,7 @@
   justify-content: center;
   text-align: left;
   overflow: hidden;
+  background-color: #020617; /* fallback if image fails */
 }
 
 .hero::before {
@@ -108,19 +107,20 @@
   inset: 0;
   background: linear-gradient(
       135deg,
-      rgba(17, 24, 39, 0.7),  /* Lighter overlay */
-      rgba(17, 24, 39, 0.4)   /* Even lighter at the end */
+      rgba(17, 24, 39, 0.7),
+      rgba(17, 24, 39, 0.4)
     ),
     url("https://picsum.photos/1200/800") center/cover no-repeat;
-  z-index: -1;
+  z-index: 0; /* was -1 */
 }
 
 .hero-inner {
   max-width: 720px;
   padding: 4rem 1.5rem 5rem;
-  position: relative; /* Ensures text stays above the background */
-  z-index: 1;
+  position: relative;
+  z-index: 1; /* stays above the background */
 }
+
 
     .hero-kicker {
       text-transform: uppercase;
