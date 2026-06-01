@@ -1,794 +1,177 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Board Finance Lab · Decision Intelligence Agency</title>
-  <meta name="description" content="Operational clarity for modern finance teams. Business process optimisation, AI-driven technology, and sharp business communication.">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Redirect non-www to www -->
-  
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #111827;
-      background-color: #ffffff;
-      line-height: 1.6;
-    }
-
-    
-
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    /* NAVIGATION */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 0;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-    }
-
-    .logo-mark {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      border: 2px solid #111827;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      font-size: 0.9rem;
-    }
-
-    .nav-links a {
-      position: relative;
-      padding-bottom: 0.25rem;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 1px;
-      background: #111827;
-      transition: width 0.2s ease-out;
-    }
-
-    .nav-links a:hover::after,
-    .nav-links a:focus::after { width: 100%; }
-
-.hero {
-  position: relative;
-  color: #f9fafb;
-  min-height: 78vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: left;
-  overflow: hidden;
-  background-color: #020617; /* fallback if image fails */
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-      135deg,
-      rgba(17, 24, 39, 0.7),
-      rgba(17, 24, 39, 0.4)
-    ),
-    url("images/hero.jpg") center/cover no-repeat;
-  z-index: 0; /* was -1 */
-}
-
-.hero-inner {
-  max-width: 720px;
-  padding: 4rem 1.5rem 5rem;
-  position: relative;
-  z-index: 1; /* stays above the background */
-}
-
-
-    .hero-kicker {
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      letter-spacing: 0.14em;
-      color: #d1d5db;
-      margin-bottom: 0.75rem;
-    }
-
-    .hero-title {
-      font-size: clamp(2.4rem, 4vw, 3.2rem);
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-
-    .hero-subtitle {
-      max-width: 34rem;
-      font-size: 0.98rem;
-      color: #e5e7eb;
-      margin-bottom: 2rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .btn {
-      border-radius: 999px;
-      padding: 0.7rem 1.5rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      border: 1px solid transparent;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
-    }
-
-    .btn:focus {
-      outline: 2px solid #111827;
-      outline-offset: 2px;
-    }
-
-    .btn-primary {
-      background: #111827;
-      color: #f9fafb;
-      border-color: #111827;
-    }
-
-    .btn-primary:hover,
-    .btn-primary:focus {
-      background: #020617;
-      border-color: #020617;
-    }
-
-    .btn-ghost {
-      background: transparent;
-      border-color: #e5e7eb;
-      color: #e5e7eb;
-    }
-
-    .btn-ghost:hover,
-    .btn-ghost:focus {
-      border-color: #f9fafb;
-      background: rgba(15, 23, 42, 0.45);
-    }
-
-    /* SECTIONS */
-    section { padding: 4.5rem 0; }
-
-    section:nth-of-type(odd) { background: #f9fafb; }
-
-    .section-header { margin-bottom: 2.5rem; }
-
-    .section-kicker {
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      letter-spacing: 0.16em;
-      color: #6b7280;
-      margin-bottom: 0.4rem;
-    }
-
-    .section-title {
-      font-size: 1.6rem;
-      margin: 0;
-    }
-
-    .section-description {
-      max-width: 34rem;
-      font-size: 0.95rem;
-      color: #4b5563;
-      margin-top: 0.6rem;
-    }
-
-    /* WHAT WE DO */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.75rem;
-      margin-top: 2rem;
-    }
-
-    .feature {
-      padding: 1.75rem 1.6rem;
-      border-radius: 1.2rem;
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-    }
-
-    .feature h3 {
-      margin-top: 0;
-      margin-bottom: 0.65rem;
-      font-size: 1rem;
-    }
-
-    .feature p {
-      margin: 0;
-      font-size: 0.92rem;
-      color: #4b5563;
-    }
-
-    /* PROJECTS */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.75rem;
-    }
-
-    .project-card {
-      border-radius: 1.1rem;
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-media {
-      height: 160px;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #e5e7eb;
-      font-size: 0.9rem;
-      text-align: center;
-      padding: 0 1rem;
-    }
-
-    .project-body {
-      padding: 1.4rem 1.4rem 1.3rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-    }
-
-    .project-title {
-      font-size: 1rem;
-      margin: 0;
-    }
-
-    .project-meta {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: #6b7280;
-    }
-
-    .project-text {
-      font-size: 0.9rem;
-      color: #4b5563;
-      flex: 1;
-    }
-
-    .project-link {
-      font-size: 0.9rem;
-      margin-top: 0.25rem;
-    }
-
-    .project-link span {
-      border-bottom: 1px solid #111827;
-    }
-/* Base style for all project media blocks */
-.project-media {
-  height: 160px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff !important; /* Force white text for maximum contrast */
-  font-size: 0.9rem;
-  font-weight: 700; /* slightly bolder = more readable */
-  text-align: center;
-  padding: 0 1rem;
-  border-top-left-radius: 1.1rem;
-  border-top-right-radius: 1.1rem;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 1); /* Solid black shadow */
-  letter-spacing: 0.02em; /* Slightly more spacing */
-
-
-}
-
-.project-media::before {
-  background: rgba(0, 0, 0, 0.6); /* Even darker overlay */
-}
-
-.project-media > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Specific images per project */
-.media-1 {
-  background-image: url("images/1.jpg");
-}
-
-.media-2 {
-  background-image: url("images/2.jpg");
-}
-
-.media-3 {
-  background-image: url("images/3.jpg");
-}
-
-.media-4 {
-  background-image: url("images/4.jpg");
-}
-
-
-    /* TESTIMONIALS */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.75rem;
-      margin-top: 1.5rem;
-    }
-
-    .testimonial {
-      background: #ffffff;
-      border-radius: 1.1rem;
-      border: 1px solid #e5e7eb;
-      padding: 1.7rem 1.6rem;
-      font-size: 0.93rem;
-    }
-
-    .testimonial-quote {
-      margin-bottom: 1.1rem;
-      color: #374151;
-    }
-
-    .testimonial-name { font-weight: 600; }
-
-    .testimonial-role {
-      font-size: 0.85rem;
-      color: #6b7280;
-    }
-
-    /* CONTACT */
-    .contact-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 2.5rem;
-      align-items: start;
-    }
-
-    .contact-info p {
-      margin: 0.3rem 0;
-      font-size: 0.95rem;
-      color: #4b5563;
-    }
-
-    .contact-info strong { font-weight: 600; }
-
-    form { display: grid; gap: 0.9rem; }
-
-    label {
-      font-size: 0.85rem;
-      font-weight: 500;
-      margin-bottom: 0.1rem;
-      display: inline-block;
-    }
-
-    input,
-    textarea {
-      width: 100%;
-      padding: 0.6rem 0.7rem;
-      border-radius: 0.5rem;
-      border: 1px solid #d1d5db;
-      font: inherit;
-      resize: vertical;
-      min-height: 42px;
-    }
-
-    input:focus,
-    textarea:focus {
-      outline: none;
-      border-color: #111827;
-      box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.1);
-    }
-
-    footer {
-      border-top: 1px solid #e5e7eb;
-      padding: 1.2rem 0 1.4rem;
-      font-size: 0.8rem;
-      color: #6b7280;
-    }
-
-    /* Mobile menu */
-    .mobile-menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0.5rem;
-    }
-
-    .mobile-menu-toggle span {
-      display: block;
-      width: 20px;
-      height: 2px;
-      background: #111827;
-      margin: 4px 0;
-      transition: 0.3s;
-    }
-
-    @media (max-width: 768px) {
-      .mobile-menu-toggle {
-        display: block;
-      }
-
-      .nav-links {
-        position: fixed;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(12px);
-        flex-direction: column;
-        padding: 1.5rem;
-        gap: 1rem;
-        transform: translateY(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        border-bottom: 1px solid #e5e7eb;
-      }
-
-      .nav-links.active {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-      }
-
-      .hero-inner { padding-top: 3.2rem; }
-
-      .contact-layout { grid-template-columns: 1fr; }
-      
-      .hero-actions {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Board Finance Lab — Professional finance &amp; accounting education</title>
+<meta name="description" content="Board Finance Lab prepares finance professionals for globally recognised certifications and equips teams with the capabilities boards now expect. Launching 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F1C2B;
+    --ink-soft:#44586D;
+    --paper:#F1F5F8;
+    --paper-deep:#E4ECF2;
+    --accent:#1B5E9C;
+    --accent-deep:#13476E;
+    --line:rgba(15,28,43,0.14);
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Hanken Grotesk',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+  header{padding:30px 0;border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .mark{font-family:var(--serif);font-weight:500;font-size:21px;letter-spacing:-0.01em}
+  .mark span{color:var(--accent)}
+  .tag{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft)}
+
+  .hero{padding:96px 0 84px;position:relative}
+  .eyebrow{font-size:12.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:26px}
+  h1{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(38px,6vw,68px);
+    line-height:1.04;
+    letter-spacing:-0.02em;
+    max-width:14ch;
+  }
+  h1 em{font-style:italic;color:var(--accent)}
+  .lede{margin-top:30px;font-size:clamp(16px,1.7vw,19px);color:var(--ink-soft);max-width:54ch}
+  .cta-row{margin-top:42px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .btn{
+    display:inline-block;background:var(--ink);color:var(--paper);
+    text-decoration:none;font-weight:500;font-size:15px;
+    padding:15px 30px;border-radius:2px;transition:transform .2s ease,background .2s ease;
+  }
+  .btn:hover{background:var(--accent-deep);transform:translateY(-2px)}
+  .btn-ghost{color:var(--ink);text-decoration:none;font-weight:500;font-size:15px;border-bottom:1px solid var(--accent);padding-bottom:3px}
+
+  .rule{height:1px;background:var(--line)}
+
+  .offer{padding:72px 0}
+  .section-label{font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:36px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .cell{background:var(--paper);padding:34px 30px}
+  .cell .n{font-family:var(--serif);font-size:13px;color:var(--accent);font-weight:600;letter-spacing:0.04em}
+  .cell h3{font-family:var(--serif);font-weight:500;font-size:22px;margin:14px 0 10px;letter-spacing:-0.01em}
+  .cell p{font-size:14.5px;color:var(--ink-soft)}
+
+  .cred{padding:76px 0;background:var(--paper-deep)}
+  .cred-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px}
+  .cred-item h4{font-family:var(--serif);font-size:19px;font-weight:500;margin-bottom:10px}
+  .cred-item p{font-size:14.5px;color:var(--ink-soft)}
+
+  .contact{padding:90px 0}
+  .contact h2{font-family:var(--serif);font-weight:500;font-size:clamp(28px,4vw,44px);letter-spacing:-0.02em;max-width:18ch}
+  .contact p{margin-top:18px;color:var(--ink-soft);font-size:17px;max-width:48ch}
+  .mail{display:inline-block;margin-top:30px;font-family:var(--serif);font-size:clamp(20px,3vw,30px);color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:4px}
+  .mail:hover{color:var(--accent)}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;font-size:13px;color:var(--ink-soft)}
+  .foot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+  .reveal{opacity:0;transform:translateY(18px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+  .d1{animation-delay:.05s}.d2{animation-delay:.16s}.d3{animation-delay:.27s}.d4{animation-delay:.38s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.reveal{animation:none;opacity:1;transform:none}}
+</style>
 </head>
 <body>
   <header>
-    <div class="container nav">
-      <div class="logo">
-        <div class="logo-mark">BFL</div>
-        <span>Board Finance Lab</span>
-      </div>
-      <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <nav class="nav-links" role="navigation" aria-label="Main navigation">
-        <a href="#what-we-do">What we do</a>
-        <a href="#projects">Projects</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#contact">Contact</a>
-      </nav>
+    <div class="wrap bar">
+      <div class="mark">Board Finance <span>Lab</span></div>
+      <div class="tag">United Kingdom · Launching 2026</div>
     </div>
   </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-inner container">
-        <div class="hero-kicker">Business process · Technology · Communication</div>
-        <h1 class="hero-title">Operational clarity for modern finance teams.</h1>
-        <p class="hero-subtitle">
-          Board Finance Lab is a decision intelligence agency working at the intersection of
-          business process optimisation, AI-driven technology, and sharp business communication
-          for boards and executives.
-        </p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Book a working session</a>
-          <a href="#what-we-do" class="btn btn-ghost">View our three dimensions</a>
-        </div>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow reveal d1">Professional finance &amp; accounting education</p>
+      <h1 class="reveal d2">Capability for the people the board <em>relies on.</em></h1>
+      <p class="lede reveal d3">Board Finance Lab prepares finance and accounting professionals for globally recognised certifications — and equips teams with the skills boards now expect. Founded by senior academics in accounting and artificial intelligence.</p>
+      <div class="cta-row reveal d4">
+        <a class="btn" href="mailto:hello@boardfinancelab.com?subject=Register%20interest%20%E2%80%94%20Board%20Finance%20Lab">Register your interest</a>
+        <a class="btn-ghost" href="#programmes">View programmes</a>
       </div>
-    </section>
-
-    <!-- WHAT WE DO -->
-    <section id="what-we-do">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">What we do</div>
-          <h2 class="section-title">Three dimensions, one lab.</h2>
-          <p class="section-description">
-            We design systems that clean up processes, embed the right technology, and communicate
-            clearly with the people who sign off on risk and capital.
-          </p>
-        </div>
-
-        <div class="features-grid">
-          <article class="feature">
-            
-             <h3>Business process optimisation</h3>
-            <p>
-              Map and redesign end-to-end finance and risk processes so work is structured,
-              measurable, and ready for automation. Less noise, fewer manual handoffs,
-              cleaner data.
-            </p>
-          </article>
-
-          <article class="feature">
-            <h3>Technology & AI systems</h3>
-            <p>
-              Select, design, and deploy AI-enabled tools that actually plug into your workflows:
-              forecasting, anomaly detection, monitoring, and decision support with explainability built in.
-            </p>
-          </article>
-
-          <article class="feature">
-            <h3>Business communication</h3>
-            <p>
-              Turn complex models and process changes into simple narratives, board papers,
-              and stakeholder packs that drive alignment instead of confusion.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-   <!-- PROJECTS -->
-<section id="projects">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-kicker">Projects</div>
-      <h2 class="section-title">Selected work</h2>
-      <p class="section-description">
-        Four core project types. Each will later expand into its own page; for now,
-        these are concise placeholders.
-      </p>
     </div>
+  </section>
 
-    <div class="projects-grid">
+  <div class="wrap"><div class="rule"></div></div>
 
-      <article class="project-card">
-        <div class="project-media media-1">
-          Process mapping · approval flows · controls
+  <section class="offer" id="programmes">
+    <div class="wrap">
+      <p class="section-label">Programmes</p>
+      <div class="grid">
+        <div class="cell">
+          <div class="n">01</div>
+          <h3>CMA preparation</h3>
+          <p>Comprehensive preparation for the Certified Management Accountant credential, delivered through world-class certification curricula.</p>
         </div>
-        <div class="project-body">
-          <div class="project-meta">01 · Process optimisation</div>
-          <h3 class="project-title">Flow Compliance</h3>
-          <p class="project-text">
-            Re-design of high-volume payment and approval workflows so regulatory controls are
-            embedded in the process, not bolted on at the end.
-          </p>
-          <div class="project-link">
-            <span>Project page coming soon</span>
-          </div>
+        <div class="cell">
+          <div class="n">02</div>
+          <h3>FMAA preparation</h3>
+          <p>An accessible entry route into the profession for students and early-career finance staff.</p>
         </div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-media media-2">
-          Scenario engines · ML forecasting
+        <div class="cell">
+          <div class="n">03</div>
+          <h3>Corporate &amp; team training</h3>
+          <p>Structured certification pathways and finance upskilling for accounting and finance functions.</p>
         </div>
-        <div class="project-body">
-          <div class="project-meta">02 · Technology & AI</div>
-          <h3 class="project-title">Finance Analysis Platform</h3>
-          <p class="project-text">
-            AI-assisted scenario library for CFO teams, combining deterministic models with ML
-            overlays for capital allocation and liquidity planning.
-          </p>
-          <div class="project-link">
-            <span>Project page coming soon</span>
-          </div>
+        <div class="cell">
+          <div class="n">04</div>
+          <h3>Finance leadership &amp; AI governance</h3>
+          <p>Forthcoming executive programmes on AI governance and model risk for finance and audit.</p>
         </div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-media media-3">
-          Streaming ledgers · alerts · timelines
-        </div>
-        <div class="project-body">
-          <div class="project-meta">03 · Technology & AI</div>
-          <h3 class="project-title">Real-Time Tracking</h3>
-          <p class="project-text">
-            Real-time monitoring of cash, credit, and operational metrics with anomaly detection
-            tuned to materiality thresholds agreed with the board.
-          </p>
-          <div class="project-link">
-            <span>Project page coming soon</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-media media-4">
-          Board packs · one-page briefs
-        </div>
-        <div class="project-body">
-          <div class="project-meta">04 · Business communication</div>
-          <h3 class="project-title">Portfolio Signals</h3>
-          <p class="project-text">
-            Translation of complex portfolio and risk analytics into short narrative briefs,
-            backed by clear visuals and model documentation for audit and regulators.
-          </p>
-          <div class="project-link">
-            <span>Project page coming soon</span>
-          </div>
-        </div>
-      </article>
-
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-    <!-- TESTIMONIALS -->
-    <section id="testimonials">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">Testimonials</div>
-          <h2 class="section-title">Leaders on working with the lab</h2>
+  <section class="cred">
+    <div class="wrap">
+      <p class="section-label">Why Board Finance Lab</p>
+      <div class="cred-grid">
+        <div class="cred-item">
+          <h4>Led by professorial faculty</h4>
+          <p>Founded by university academics in accounting and machine learning, including an FCPA (Australia) with two decades of teaching experience.</p>
         </div>
-
-        <div class="testimonials-grid">
-          <article class="testimonial">
-            <p class="testimonial-quote">
-              "We finally have a clean view of how process, systems, and reporting fit together.
-              The board discussion moved from firefighting to options."
-            </p>
-            <div class="testimonial-name">CFO, ASX-listed financial services group</div>
-            <div class="testimonial-role">Process + AI implementation</div>
-          </article>
-
-          <article class="testimonial">
-            <p class="testimonial-quote">
-              "The models are technical, but the way they are communicated is not.
-              Our executives understand the trade-offs and can challenge assumptions."
-            </p>
-            <div class="testimonial-name">Chief Risk Officer, European bank</div>
-            <div class="testimonial-role">Decision intelligence for risk committee</div>
-          </article>
+        <div class="cred-item">
+          <h4>Registered UK learning provider</h4>
+          <p>Listed on the UK Register of Learning Providers, operating to professional education standards.</p>
+        </div>
+        <div class="cred-item">
+          <h4>Built on recognised curricula</h4>
+          <p>Programmes delivered through established global certification partners and proven exam-preparation methods.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">Contact</div>
-          <h2 class="section-title">Start with a 30-minute working session.</h2>
-          <p class="section-description">
-            Bring one concrete problem in process, technology, or communication. We respond
-            with a structured view of where to optimise first.
-          </p>
-        </div>
-
-        <div class="contact-layout">
-          <div class="contact-info">
-            <p><strong>Email</strong><br />info@boardfinancelab.com</p>
-            <p><strong>Location</strong><br />London</p>
-            <p><strong>We work with</strong><br />Boards, CFOs, CROs, Heads of Finance & Data</p>
-          </div>
-
-          <form id="contact-form" method="POST" action="#" novalidate>
-            <div>
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name" required />
-            </div>
-            <div>
-              <label for="company">Company</label>
-              <input id="company" name="company" type="text" placeholder="Organisation / role" required />
-            </div>
-            <div>
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" required />
-            </div>
-            <div>
-              <label for="message">What do you want to improve?</label>
-              <textarea id="message" name="message" rows="4" placeholder="Short description of your process, technology, or communication challenge" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Send enquiry</button>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
+  <section class="contact">
+    <div class="wrap">
+      <h2 class="reveal d1">Partnership and enrolment enquiries welcome.</h2>
+      <p class="reveal d2">We are onboarding founding partners and registering early interest ahead of our 2026 launch.</p>
+      <a class="mail reveal d3" href="mailto:hello@boardfinancelab.com">hello@boardfinancelab.com</a>
+    </div>
+  </section>
 
   <footer>
-    <div class="container">
-      © <span id="year"></span> Board Finance Lab · Decision Intelligence Agency
+    <div class="wrap foot">
+      <div>Board Finance Lab · United Kingdom</div>
+      <div>© 2026 Board Finance Lab. All rights reserved.</div>
     </div>
   </footer>
-
-  <script>
-    // Set current year in footer
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Mobile menu toggle
-    const menuToggle = document.querySelector('.mobile-menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    
-    menuToggle.addEventListener('click', () => {
-      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', !isExpanded);
-      navLinks.classList.toggle('active');
-    });
-
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    // Form submission handler
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Basic validation
-      const formData = new FormData(this);
-      let isValid = true;
-      
-      for (let [key, value] of formData) {
-        if (!value.trim()) {
-          isValid = false;
-          break;
-        }
-      }
-      
-      if (isValid) {
-        // In a real implementation, you would send the form data to a server
-        alert('Thank you for your enquiry. We will get back to you soon!');
-        this.reset();
-      } else {
-        alert('Please fill in all required fields.');
-      }
-    });
-  </script>
 </body>
 </html>
